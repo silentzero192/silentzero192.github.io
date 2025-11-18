@@ -1,0 +1,54 @@
+<!-- posts.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Posts | Muhammad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="theme-dark">
+    <header class="site-header">
+        <a class="logo" href="index.html">Muhammad</a>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="posts.html" class="active">Posts</a>
+            <a href="resume.html">Resume</a>
+            <button id="themeToggle" aria-label="Toggle theme">🌗</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Posts</h1>
+        <p class="muted">Research notes, reverse engineering logs, and CTF writeups.</p>
+
+        <section class="post-grid">
+            <article class="post-card">
+                <h3>Linux mm: exploiting a race in page refcount</h3>
+                <p>Root cause analysis, exploitation strategy, and mitigations.</p>
+                <a class="link" href="#">Coming soon</a>
+            </article>
+            <article class="post-card">
+                <h3>From crash to RCE: crafting a reliable kernel primitive</h3>
+                <p>Finding stability and chaining primitives under constraints.</p>
+                <a class="link" href="#">Coming soon</a>
+            </article>
+            <article class="post-card">
+                <h3>Unpacking a custom VM-based obfuscator</h3>
+                <p>Tracing, lifting, and documenting handlers.</p>
+                <a class="link" href="#">Coming soon</a>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="year"></span> Muhammad — Built with GitHub Pages</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

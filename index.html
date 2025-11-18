@@ -1,1 +1,97 @@
-<h1>Muhammad Jilani's Blog</h1>
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Muhammad | Security Researcher</title>
+  <meta name="description" content="Security researcher portfolio: vulnerability research, kernel exploitation, reverse engineering." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="theme-dark">
+  <header class="site-header">
+    <a class="logo" href="index.html">Muhammad</a>
+    <nav class="nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="posts.html">Posts</a>
+      <a href="resume.html">Resume</a>
+      <button id="themeToggle" aria-label="Toggle theme">🌗</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <!-- Animated network background -->
+    <canvas id="netCanvas" aria-hidden="true"></canvas>
+
+    <div class="hero-content">
+      <img src="assets/avatar.jpg" alt="Portrait of Muhammad" class="avatar">
+      <h1>Muhammad</h1>
+      <p class="subtitle">A security researcher interested in Vulnerability Research, Linux Kernel 0‑day Exploitation, and Reverse Engineering.</p>
+
+      <div class="cta">
+        <a class="btn primary" href="posts.html">Posts</a>
+        <a class="btn secondary" href="resume.html">Resume</a>
+      </div>
+
+      <div class="socials" aria-label="Social links">
+        <a href="https://twitter.com/yourhandle" aria-label="Twitter" target="_blank" rel="noopener">Twitter</a>
+        <a href="https://www.linkedin.com/in/yourhandle" aria-label="LinkedIn" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/yourhandle" aria-label="GitHub" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:you@example.com" aria-label="Email">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="cards">
+      <article class="card">
+        <h3>Focus areas</h3>
+        <ul class="pill-list">
+          <li>Kernel Exploitation</li>
+          <li>Vulnerability Research</li>
+          <li>Reverse Engineering</li>
+          <li>CTF & Writeups</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Selected work</h3>
+        <ul class="list">
+          <li>
+            <span class="title">Analysis of CVE‑XXXX‑YYYY in Linux mm subsystem</span>
+            <span class="meta">Memory corruption • PoC • blog</span>
+            <a class="link" href="posts.html">Read more</a>
+          </li>
+          <li>
+            <span class="title">Kernel heap spray technique refinement</span>
+            <span class="meta">Research note • demo</span>
+            <a class="link" href="posts.html">Read more</a>
+          </li>
+          <li>
+            <span class="title">Reverse engineering a custom packer</span>
+            <span class="meta">IDA • Ghidra • methodology</span>
+            <a class="link" href="posts.html">Read more</a>
+          </li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>About</h3>
+        <p>
+          I study BSCS at UET Lahore and focus on low‑level systems, exploit dev, and practical security.
+          I publish beginner‑friendly writeups and open tools for education.
+        </p>
+        <a class="link" href="mailto:you@example.com">Let’s collaborate</a>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Muhammad — Built with GitHub Pages</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

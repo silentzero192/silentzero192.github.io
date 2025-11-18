@@ -1,0 +1,73 @@
+<!-- resume.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Resume | Muhammad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="theme-dark">
+    <header class="site-header">
+        <a class="logo" href="index.html">Muhammad</a>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="posts.html">Posts</a>
+            <a href="resume.html" class="active">Resume</a>
+            <button id="themeToggle" aria-label="Toggle theme">🌗</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Resume</h1>
+        <p class="muted">Download a PDF or view key highlights below.</p>
+
+        <div class="resume-actions">
+            <a class="btn primary" href="assets/resume.pdf" target="_blank" rel="noopener">Download PDF</a>
+            <a class="btn secondary" href="mailto:you@example.com">Contact</a>
+        </div>
+
+        <section class="cards">
+            <article class="card">
+                <h3>Education</h3>
+                <p>BSCS, UET Lahore — CGPA 3.15 (expected graduation 2026)</p>
+            </article>
+            <article class="card">
+                <h3>Skills</h3>
+                <ul class="pill-list">
+                    <li>Memory management</li>
+                    <li>Kernel exploitation</li>
+                    <li>Reverse engineering</li>
+                    <li>Cryptography</li>
+                    <li>Web exploitation</li>
+                    <li>Python scripting</li>
+                </ul>
+            </article>
+            <article class="card">
+                <h3>Experience</h3>
+                <ul class="list">
+                    <li><span class="title">Security Research Intern</span> — Vulnerability triage, PoC dev, writeups
+                    </li>
+                    <li><span class="title">CTF Contributor</span> — Crypto/Web challenges, solution docs</li>
+                </ul>
+            </article>
+        </section>
+
+        <section class="pdf-embed">
+            <object data="assets/resume.pdf" type="application/pdf" aria-label="Resume PDF">
+                <p>PDF preview not supported. Please use the Download button above.</p>
+            </object>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="year"></span> Muhammad — Built with GitHub Pages</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
