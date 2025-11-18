@@ -1,97 +1,30 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Muhammad | Security Researcher</title>
-  <meta name="description" content="Security researcher portfolio: vulnerability research, kernel exploitation, reverse engineering." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Qadir - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="theme-dark">
-  <header class="site-header">
-    <a class="logo" href="index.html">Muhammad</a>
-    <nav class="nav">
-      <a href="index.html" class="active">Home</a>
-      <a href="posts.html">Posts</a>
-      <a href="resume.html">Resume</a>
-      <button id="themeToggle" aria-label="Toggle theme">🌗</button>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <!-- Animated network background -->
-    <canvas id="netCanvas" aria-hidden="true"></canvas>
-
-    <div class="hero-content">
-      <img src="assets/avatar.jpg" alt="Portrait of Muhammad" class="avatar">
-      <h1>Muhammad</h1>
-      <p class="subtitle">A security researcher interested in Vulnerability Research, Linux Kernel 0‑day Exploitation, and Reverse Engineering.</p>
-
-      <div class="cta">
-        <a class="btn primary" href="posts.html">Posts</a>
-        <a class="btn secondary" href="resume.html">Resume</a>
-      </div>
-
-      <div class="socials" aria-label="Social links">
-        <a href="https://twitter.com/yourhandle" aria-label="Twitter" target="_blank" rel="noopener">Twitter</a>
-        <a href="https://www.linkedin.com/in/yourhandle" aria-label="LinkedIn" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/yourhandle" aria-label="GitHub" target="_blank" rel="noopener">GitHub</a>
-        <a href="mailto:you@example.com" aria-label="Email">Email</a>
-      </div>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <h1 class="name">Abdul Qadir</h1>
+        <p class="description">A security researcher interested in Vulnerability Research, Linux Kernel n-day Exploitation, and Reverse Engineering</p>
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div class="buttons">
+            <a href="#" class="btn">Posts</a>
+            <a href="#" class="btn">Resume</a>
+        </div>
     </div>
-  </section>
 
-  <main class="container">
-    <section class="cards">
-      <article class="card">
-        <h3>Focus areas</h3>
-        <ul class="pill-list">
-          <li>Kernel Exploitation</li>
-          <li>Vulnerability Research</li>
-          <li>Reverse Engineering</li>
-          <li>CTF & Writeups</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h3>Selected work</h3>
-        <ul class="list">
-          <li>
-            <span class="title">Analysis of CVE‑XXXX‑YYYY in Linux mm subsystem</span>
-            <span class="meta">Memory corruption • PoC • blog</span>
-            <a class="link" href="posts.html">Read more</a>
-          </li>
-          <li>
-            <span class="title">Kernel heap spray technique refinement</span>
-            <span class="meta">Research note • demo</span>
-            <a class="link" href="posts.html">Read more</a>
-          </li>
-          <li>
-            <span class="title">Reverse engineering a custom packer</span>
-            <span class="meta">IDA • Ghidra • methodology</span>
-            <a class="link" href="posts.html">Read more</a>
-          </li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h3>About</h3>
-        <p>
-          I study BSCS at UET Lahore and focus on low‑level systems, exploit dev, and practical security.
-          I publish beginner‑friendly writeups and open tools for education.
-        </p>
-        <a class="link" href="mailto:you@example.com">Let’s collaborate</a>
-      </article>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <p>© <span id="year"></span> Muhammad — Built with GitHub Pages</p>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
