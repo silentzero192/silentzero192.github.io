@@ -1,4 +1,3 @@
-<!-- resume.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Resume | Muhammad Jilani</title>
+    <meta name="description" content="Resume and highlights — education, experience, and technical strengths of silentzero192." />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
 </head>
@@ -22,45 +22,83 @@
     </header>
 
     <main class="container">
-        <h1>Resume</h1>
-        <p class="muted">Download a PDF or view key highlights below.</p>
-
-        <div class="resume-actions">
-            <a class="btn primary" href="assets/resume.pdf" target="_blank" rel="noopener">Download PDF</a>
-            <a class="btn secondary" href="mailto:muhammadjilani192@proton.me">Contact</a>
-        </div>
-
-        <section class="cards">
-            <article class="card">
-                <h3>Education</h3>
-                <p>BSCS, UET Lahore — CGPA 3.45 (expected graduation 2026)</p>
-            </article>
-            <article class="card">
-                <h3>Skills</h3>
-                <ul class="pill-list">
-                    <li>Memory management</li>
-                    <li>Kernel exploitation</li>
-                    <li>Reverse engineering</li>
-                    <li>Cryptography</li>
-                    <li>Web exploitation</li>
-                    <li>Python scripting</li>
-                </ul>
-            </article>
-            <article class="card">
-                <h3>Experience</h3>
-                <ul class="list">
-                    <li><span class="title">Security Research Intern</span> — Vulnerability triage, PoC dev, writeups
-                    </li>
-                    <li><span class="title">CTF Contributor</span> — Crypto/Web challenges, solution docs</li>
-                </ul>
-            </article>
+        <section class="section-surface">
+            <div class="section-heading">
+                <p>Credentials</p>
+                <h1>Resume</h1>
+            </div>
+            <p class="subtitle hero-summary">Focused on systems security, vulnerability research, and collaborative disclosure.</p>
+            <div class="resume-actions">
+                <a class="btn primary" href="assets/resume.pdf" target="_blank" rel="noopener">Download PDF</a>
+                <a class="btn secondary" href="mailto:muhammadjilani192@proton.me">Contact</a>
+            </div>
         </section>
 
-        <!-- <section class="pdf-embed">
-            <object data="assets/resume.pdf" type="application/pdf" aria-label="Resume PDF">
-                <p>PDF preview not supported. Please use the Download button above.</p>
-            </object>
-        </section> -->
+        <section class="section-surface grid-2">
+            <div class="card">
+                <h3>Education</h3>
+                <p>BSCS, UET Lahore — CGPA 3.45 (expected graduation 2026)</p>
+                <p>Capstone centered on kernel exploitation mitigation and hardened firmware verification.</p>
+            </div>
+            <div class="card">
+                <h3>Experience</h3>
+                <ul class="list">
+                    <li>
+                        <span class="title">Security Research Intern</span>
+                        <span class="meta">Vulnerability triage, PoC development, kernel fuzzing pipelines</span>
+                    </li>
+                    <li>
+                        <span class="title">CTF Contributor</span>
+                        <span class="meta">Crypto/web challenges, post-mortems, mentoring</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-surface">
+            <div class="section-heading">
+                <p>Strengths</p>
+                <h2>Technical stack</h2>
+            </div>
+            <ul class="pill-list">
+                <li>Memory management & exploitation</li>
+                <li>Linux kernel (mm, scheduler)</li>
+                <li>Reverse engineering (IDA, Ghidra)</li>
+                <li>Python scripting & automation</li>
+                <li>Web & API security</li>
+                <li>Security education & writing</li>
+            </ul>
+        </section>
+
+        <section class="section-surface">
+            <div class="section-heading">
+                <p>Projects & leadership</p>
+                <h2>Selected highlights</h2>
+            </div>
+            <div class="timeline">
+                <article class="timeline-item">
+                    <h4>2025 • Kernel exploitation automation</h4>
+                    <span>Proof-of-concept tooling delivered to research partners</span>
+                    <p>Architected fuzz-to-exploit pipelines, pushed stable commits, and documented mitigation proposals.</p>
+                </article>
+                <article class="timeline-item">
+                    <h4>2024 • Research-led mentorship streams</h4>
+                    <span>Workshops & writeups</span>
+                    <p>Shared reverse engineering workflows, review practices, and security narratives with the community.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="cta-panel">
+            <div>
+                <h3>Ready for new challenges</h3>
+                <p>Available for research collaborations, junior mentorship, and contract engagements.</p>
+            </div>
+            <div>
+                <a class="btn primary" href="mailto:muhammadjilani192@proton.me">Book a chat</a>
+                <a class="btn secondary" href="index.html">View portfolio</a>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
