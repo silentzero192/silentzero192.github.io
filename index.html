@@ -1,342 +1,729 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AlexSec Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlexSec – Cybersecurity Portfolio</title>
+    <meta name="description"
+        content="Alex Chen – Cybersecurity student exploring ethical hacking, network security, and CTF challenges." />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="layout.css" />
 </head>
+
 <body>
-  <div class="portfolio">
-    <nav class="navbar">
-      <div class="nav-inner container">
-        <button type="button" class="logo-btn" data-scroll="home" aria-label="Go to home section">
-          <span class="logo-mark">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+
+    <div id="root">
+
+        <!-- ── NAV ── -->
+        <nav id="navbar">
+            <div class="nav-inner">
+                <!-- Logo -->
+                <div class="nav-logo" onclick="scrollTo('home')">
+                    <div class="nav-logo-icon">
+                        <!-- ShieldIcon -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    <span class="nav-logo-text">Alex<span class="accent">Sec</span></span>
+                </div>
+
+                <!-- Desktop Nav -->
+                <div class="desktop-nav" id="desktopNav">
+                    <button class="nav-link active" onclick="scrollTo('home')">Home</button>
+                    <button class="nav-link" onclick="scrollTo('about')">About</button>
+                    <button class="nav-link" onclick="scrollTo('skills')">Skills</button>
+                    <button class="nav-link" onclick="scrollTo('projects')">Projects</button>
+                    <button class="nav-link" onclick="scrollTo('contact')">Contact</button>
+                </div>
+
+                <!-- Right actions -->
+                <div class="nav-actions">
+                    <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">
+                        <!-- Sun icon (shown in dark mode) -->
+                        <svg id="sunIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+                        <!-- Moon icon (shown in light mode) -->
+                        <svg id="moonIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+                    <button id="menuToggle" class="icon-btn mobile-menu-btn" aria-label="Toggle menu">
+                        <svg id="menuIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
+                        </svg>
+                        <svg id="closeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu" style="display:none">
+            <button class="nav-link active" onclick="scrollTo('home');closeMobileMenu()">Home</button>
+            <button class="nav-link" onclick="scrollTo('about');closeMobileMenu()">About</button>
+            <button class="nav-link" onclick="scrollTo('skills');closeMobileMenu()">Skills</button>
+            <button class="nav-link" onclick="scrollTo('projects');closeMobileMenu()">Projects</button>
+            <button class="nav-link" onclick="scrollTo('contact');closeMobileMenu()">Contact</button>
+        </div>
+
+        <!-- ── HERO ── -->
+        <section id="home" class="hero-section">
+            <!-- Hex Grid -->
+            <svg class="hex-grid" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="hex" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+                        <polygon points="30,2 58,17 58,35 30,50 2,35 2,17" fill="none" class="hex-poly"
+                            stroke-width="1" />
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#hex)" />
             </svg>
-          </span>
-          <span class="logo-text">Alex<span class="accent">Sec</span></span>
-        </button>
 
-        <div id="desktop-nav" class="desktop-nav"></div>
+            <div class="radial-glow radial-glow--hero"></div>
 
-        <div class="nav-actions">
-          <button id="theme-toggle" type="button" class="icon-btn" aria-label="Toggle dark and light mode"></button>
-          <button id="menu-toggle" type="button" class="icon-btn mobile-menu-btn" aria-label="Toggle mobile menu"></button>
-        </div>
-      </div>
-    </nav>
+            <div class="container hero-container">
+                <div class="hero-grid">
+                    <!-- Left -->
+                    <div class="hero-left">
+                        <div class="section-label fade-up" style="margin-bottom:16px">Security Researcher in Training
+                        </div>
+                        <h1 class="hero-h1" style="animation:fadeUp 0.8s ease 0.1s both">
+                            <span class="text-main">Securing the</span><br>
+                            <span class="text-accent glow">Digital World</span><br>
+                            <span class="text-main">One Byte</span>&nbsp;<span class="text-accent2">at a Time</span>
+                        </h1>
+                        <p class="hero-desc" style="animation:fadeUp 0.8s ease 0.2s both">
+                            A passionate cybersecurity student exploring ethical hacking, network security, and CTF
+                            challenges. Building solid fundamentals to protect systems and people.
+                        </p>
+                        <div class="hero-btns" style="animation:fadeUp 0.8s ease 0.3s both">
+                            <button class="btn-primary pulse" onclick="scrollTo('projects')">
+                                View Projects
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="7" y1="17" x2="17" y2="7" />
+                                    <polyline points="7 7 17 7 17 17" />
+                                </svg>
+                            </button>
+                            <button class="btn-outline" onclick="scrollTo('contact')">Contact Me</button>
+                        </div>
+                        <div class="hero-stats" style="animation:fadeUp 0.8s ease 0.4s both">
+                            <div>
+                                <div class="stat-num">4+</div>
+                                <div class="stat-label">Projects Built</div>
+                            </div>
+                            <div>
+                                <div class="stat-num">50+</div>
+                                <div class="stat-label">CTF Challenges</div>
+                            </div>
+                            <div>
+                                <div class="stat-num">1yr+</div>
+                                <div class="stat-label">Learning Journey</div>
+                            </div>
+                        </div>
+                    </div>
 
-    <div id="mobile-menu" class="mobile-menu"></div>
+                    <!-- Right – Shield + Terminal -->
+                    <div class="hero-right" style="animation:fadeUp 0.9s ease 0.2s both">
+                        <!-- Animated Shield -->
+                        <div class="shield-wrap">
+                            <svg width="220" height="220" viewBox="0 0 220 220" fill="none">
+                                <!-- Outer ring -->
+                                <circle cx="110" cy="110" r="100" class="shield-ring" stroke-width="1"
+                                    stroke-dasharray="4 6" opacity="0.3">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 110 110"
+                                        to="360 110 110" dur="20s" repeatCount="indefinite" />
+                                </circle>
+                                <!-- Mid ring -->
+                                <circle cx="110" cy="110" r="75" class="shield-ring" stroke-width="1"
+                                    stroke-dasharray="8 4" opacity="0.2">
+                                    <animateTransform attributeName="transform" type="rotate" from="360 110 110"
+                                        to="0 110 110" dur="14s" repeatCount="indefinite" />
+                                </circle>
+                                <!-- Shield body -->
+                                <path
+                                    d="M110 30 L170 55 L170 110 C170 145 110 175 110 175 C110 175 50 145 50 110 L50 55 Z"
+                                    class="shield-body-fill shield-body-stroke" stroke-width="2" />
+                                <!-- Shield inner -->
+                                <path
+                                    d="M110 50 L155 70 L155 110 C155 135 110 157 110 157 C110 157 65 135 65 110 L65 70 Z"
+                                    class="shield-inner-fill shield-body-stroke" stroke-width="1.5" />
+                                <!-- Lock rect -->
+                                <rect x="97" y="108" width="26" height="20" rx="3" class="lock-rect" />
+                                <path d="M103 108 L103 101 C103 96 117 96 117 101 L117 108" class="shield-ring"
+                                    stroke-width="2.5" fill="none" stroke-linecap="round" />
+                                <circle cx="110" cy="118" r="3" fill="#0a0f1e" />
+                                <!-- Pulse dots -->
+                                <circle cx="210" cy="110" r="3" class="shield-ring" opacity="0.6">
+                                    <animate attributeName="r" values="2;4;2" dur="2s" begin="0s"
+                                        repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" begin="0s"
+                                        repeatCount="indefinite" />
+                                </circle>
+                                <circle cx="160" cy="196.6" r="3" class="shield-ring" opacity="0.6">
+                                    <animate attributeName="r" values="2;4;2" dur="2s" begin="0.33s"
+                                        repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" begin="0.33s"
+                                        repeatCount="indefinite" />
+                                </circle>
+                                <circle cx="60" cy="196.6" r="3" class="shield-ring" opacity="0.6">
+                                    <animate attributeName="r" values="2;4;2" dur="2s" begin="0.66s"
+                                        repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" begin="0.66s"
+                                        repeatCount="indefinite" />
+                                </circle>
+                                <circle cx="10" cy="110" r="3" class="shield-ring" opacity="0.6">
+                                    <animate attributeName="r" values="2;4;2" dur="2s" begin="0.99s"
+                                        repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" begin="0.99s"
+                                        repeatCount="indefinite" />
+                                </circle>
+                                <circle cx="60" cy="23.4" r="3" class="shield-ring" opacity="0.6">
+                                    <animate attributeName="r" values="2;4;2" dur="2s" begin="1.32s"
+                                        repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" begin="1.32s"
+                                        repeatCount="indefinite" />
+                                </circle>
+                                <circle cx="160" cy="23.4" r="3" class="shield-ring" opacity="0.6">
+                                    <animate attributeName="r" values="2;4;2" dur="2s" begin="1.65s"
+                                        repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" begin="1.65s"
+                                        repeatCount="indefinite" />
+                                </circle>
+                            </svg>
+                        </div>
 
-    <section id="home" class="hero-section">
-      <svg class="hex-grid" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <pattern id="hex" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
-            <polygon class="hex-polygon" points="30,2 58,17 58,35 30,50 2,35 2,17"></polygon>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#hex)"></rect>
-      </svg>
-
-      <div class="hero-radial" aria-hidden="true"></div>
-
-      <div class="container hero-container">
-        <div class="hero-grid">
-          <div class="hero-left">
-            <div class="section-label fade-up">Security Researcher in Training</div>
-
-            <h1 class="hero-title" style="animation: fadeUp 0.8s ease 0.1s both;">
-              <span class="text-main">Securing the</span><br />
-              <span class="accent glow">Digital World</span><br />
-              <span class="text-main">One Byte</span>
-              <span class="accent2">at a Time</span>
-            </h1>
-
-            <p class="hero-copy" style="animation: fadeUp 0.8s ease 0.2s both;">
-              A passionate cybersecurity student exploring ethical hacking, network security, and CTF challenges. Building solid fundamentals to protect systems and people.
-            </p>
-
-            <div class="hero-actions" style="animation: fadeUp 0.8s ease 0.3s both;">
-              <button type="button" class="btn-primary pulse" data-scroll="projects">
-                View Projects
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
-              </button>
-              <button type="button" class="btn-outline" data-scroll="contact">Contact Me</button>
-            </div>
-
-            <div class="hero-stats" style="animation: fadeUp 0.8s ease 0.4s both;">
-              <div>
-                <div class="hero-stat-num">4+</div>
-                <div class="hero-stat-label">Projects Built</div>
-              </div>
-              <div>
-                <div class="hero-stat-num">50+</div>
-                <div class="hero-stat-label">CTF Challenges</div>
-              </div>
-              <div>
-                <div class="hero-stat-num">1yr+</div>
-                <div class="hero-stat-label">Learning Journey</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-right" style="animation: fadeUp 0.9s ease 0.2s both;">
-            <div class="animated-shield-wrapper" aria-hidden="true">
-              <svg class="animated-shield" width="220" height="220" viewBox="0 0 220 220" fill="none">
-                <circle cx="110" cy="110" r="100" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4 6" opacity="0.3">
-                  <animateTransform attributeName="transform" type="rotate" from="0 110 110" to="360 110 110" dur="20s" repeatCount="indefinite"></animateTransform>
-                </circle>
-                <circle cx="110" cy="110" r="75" stroke="var(--accent)" stroke-width="1" stroke-dasharray="8 4" opacity="0.2">
-                  <animateTransform attributeName="transform" type="rotate" from="360 110 110" to="0 110 110" dur="14s" repeatCount="indefinite"></animateTransform>
-                </circle>
-                <path d="M110 30 L170 55 L170 110 C170 145 110 175 110 175 C110 175 50 145 50 110 L50 55 Z" fill="var(--accent)" fill-opacity="0.08" stroke="var(--accent)" stroke-width="2"></path>
-                <path d="M110 50 L155 70 L155 110 C155 135 110 157 110 157 C110 157 65 135 65 110 L65 70 Z" fill="var(--accent)" fill-opacity="0.05" stroke="var(--accent)" stroke-width="1.5"></path>
-                <rect x="97" y="108" width="26" height="20" rx="3" fill="var(--accent)" fill-opacity="0.7"></rect>
-                <path d="M103 108 L103 101 C103 96 117 96 117 101 L117 108" stroke="var(--accent)" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
-                <circle cx="110" cy="118" r="3" fill="#0a0f1e"></circle>
-
-                <circle cx="210" cy="110" r="3" fill="var(--accent)" opacity="0.6">
-                  <animate attributeName="r" values="2;4;2" dur="2s" begin="0s" repeatCount="indefinite"></animate>
-                  <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" begin="0s" repeatCount="indefinite"></animate>
-                </circle>
-                <circle cx="160" cy="196.6" r="3" fill="var(--accent)" opacity="0.6">
-                  <animate attributeName="r" values="2;4;2" dur="2s" begin="0.33s" repeatCount="indefinite"></animate>
-                  <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" begin="0.33s" repeatCount="indefinite"></animate>
-                </circle>
-                <circle cx="60" cy="196.6" r="3" fill="var(--accent)" opacity="0.6">
-                  <animate attributeName="r" values="2;4;2" dur="2s" begin="0.66s" repeatCount="indefinite"></animate>
-                  <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" begin="0.66s" repeatCount="indefinite"></animate>
-                </circle>
-                <circle cx="10" cy="110" r="3" fill="var(--accent)" opacity="0.6">
-                  <animate attributeName="r" values="2;4;2" dur="2s" begin="0.99s" repeatCount="indefinite"></animate>
-                  <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" begin="0.99s" repeatCount="indefinite"></animate>
-                </circle>
-                <circle cx="60" cy="23.4" r="3" fill="var(--accent)" opacity="0.6">
-                  <animate attributeName="r" values="2;4;2" dur="2s" begin="1.32s" repeatCount="indefinite"></animate>
-                  <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" begin="1.32s" repeatCount="indefinite"></animate>
-                </circle>
-                <circle cx="160" cy="23.4" r="3" fill="var(--accent)" opacity="0.6">
-                  <animate attributeName="r" values="2;4;2" dur="2s" begin="1.65s" repeatCount="indefinite"></animate>
-                  <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" begin="1.65s" repeatCount="indefinite"></animate>
-                </circle>
-              </svg>
-            </div>
-
-            <div class="terminal-window">
-              <div class="terminal-bar">
-                <div class="terminal-dot" style="background: #ef4444;"></div>
-                <div class="terminal-dot" style="background: #f59e0b;"></div>
-                <div class="terminal-dot" style="background: #22c55e;"></div>
-                <span class="terminal-user">alex@terminal:~$</span>
-              </div>
-              <div id="terminal-lines" class="terminal-lines"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="about-section">
-      <div class="about-radial" aria-hidden="true"></div>
-      <div class="container section-container about-content">
-        <div class="section-label tight-label">Who I Am</div>
-        <h2 class="section-title about-title">About <span class="accent">Me</span></h2>
-
-        <div class="about-grid">
-          <div class="about-copy">
-            <p>
-              Hey! I'm <strong class="text-main">Alex Chen</strong>, a cybersecurity student currently pursuing my degree and diving deep into the world of ethical hacking and digital defense.
-            </p>
-            <p>
-              I'm passionate about understanding how systems work under the hood — so I can better understand how they fail. From poking at CTF challenges to writing Python tools for recon, I'm building a foundation one skill at a time.
-            </p>
-            <p>
-              Currently grinding through <strong class="accent">TryHackMe</strong> and <strong class="accent">HackTheBox</strong> to sharpen my practical skills. My goal: land an internship in offensive security or SOC analysis.
-            </p>
-
-            <div class="about-info-grid">
-              <div class="about-info-item">
-                <div class="about-info-key">Status</div>
-                <div class="about-info-value">Student / Learning</div>
-              </div>
-              <div class="about-info-item">
-                <div class="about-info-key">Focus</div>
-                <div class="about-info-value">Ethical Hacking</div>
-              </div>
-              <div class="about-info-item">
-                <div class="about-info-key">Location</div>
-                <div class="about-info-value">Remote / Open</div>
-              </div>
-              <div class="about-info-item">
-                <div class="about-info-key">Available</div>
-                <div class="about-info-value">Internships 2025</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="about-stats">
-            <div class="about-stat-grid">
-              <div class="stat-card">
-                <div class="stat-icon accent">
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  </svg>
+                        <!-- Terminal box -->
+                        <div class="terminal-box">
+                            <div class="terminal-bar">
+                                <div class="terminal-dot" style="background:#ef4444"></div>
+                                <div class="terminal-dot" style="background:#f59e0b"></div>
+                                <div class="terminal-dot" style="background:#22c55e"></div>
+                                <span class="terminal-title">alex@terminal:~$</span>
+                            </div>
+                            <div class="terminal-body" id="terminalBody"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-label">Security Focus</div>
-                <div class="stat-sub">Offensive &amp; Defensive</div>
-              </div>
+            </div>
+        </section>
 
-              <div class="stat-card">
-                <div class="stat-icon accent">
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="4 17 10 11 4 5"></polyline>
-                    <line x1="12" y1="19" x2="20" y2="19"></line>
-                  </svg>
+        <!-- ── ABOUT ── -->
+        <section id="about" style="padding:100px 24px">
+            <div class="radial-glow radial-glow--about"></div>
+            <div class="container" style="position:relative;z-index:1">
+                <div class="section-label" style="margin-bottom:12px">Who I Am</div>
+                <h2 class="section-title" style="margin-bottom:60px">About <span class="text-accent">Me</span></h2>
+
+                <div class="about-grid">
+                    <!-- Left text -->
+                    <div class="about-left">
+                        <p class="about-para">Hey! I'm <strong class="text-main">Alex Chen</strong>, a cybersecurity
+                            student currently pursuing my degree and diving deep into the world of ethical hacking and
+                            digital defense.</p>
+                        <p class="about-para">I'm passionate about understanding how systems work under the hood — so I
+                            can better understand how they fail. From poking at CTF challenges to writing Python tools
+                            for recon, I'm building a foundation one skill at a time.</p>
+                        <p class="about-para" style="margin-bottom:32px">Currently grinding through <strong
+                                class="text-accent">TryHackMe</strong> and <strong
+                                class="text-accent">HackTheBox</strong> to sharpen my practical skills. My goal: land an
+                            internship in offensive security or SOC analysis.</p>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-key">Status</div>
+                                <div class="info-val">Student / Learning</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-key">Focus</div>
+                                <div class="info-val">Ethical Hacking</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-key">Location</div>
+                                <div class="info-val">Remote / Open</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-key">Available</div>
+                                <div class="info-val">Internships 2025</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right stat cards -->
+                    <div class="about-right">
+                        <div class="stat-cards-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                    </svg>
+                                </div>
+                                <div class="stat-card-label">Security Focus</div>
+                                <div class="stat-card-sub">Offensive &amp; Defensive</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="4 17 10 11 4 5" />
+                                        <line x1="12" y1="19" x2="20" y2="19" />
+                                    </svg>
+                                </div>
+                                <div class="stat-card-label">Linux User</div>
+                                <div class="stat-card-sub">Kali &amp; Arch daily</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="8" y="6" width="8" height="14" rx="4" />
+                                        <path d="M19 7l-3 2M5 7l3 2M19 12h-3M5 12h3M19 17l-3-1M5 17l3-1" />
+                                        <path d="M12 6V3" />
+                                    </svg>
+                                </div>
+                                <div class="stat-card-label">CTF Player</div>
+                                <div class="stat-card-sub">TryHackMe &amp; HackTheBox</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="16 18 22 12 16 6" />
+                                        <polyline points="8 6 2 12 8 18" />
+                                    </svg>
+                                </div>
+                                <div class="stat-card-label">Python Dev</div>
+                                <div class="stat-card-sub">Scripting &amp; Tooling</div>
+                            </div>
+                        </div>
+                        <!-- Learning Platforms -->
+                        <div class="platforms-box">
+                            <div class="platforms-title">Learning Platforms</div>
+                            <div class="platform-row"><span class="platform-name">TryHackMe</span><span
+                                    class="platform-rank" style="color:#00d4aa;background:rgba(0,212,170,0.08)">Top
+                                    10%</span></div>
+                            <div class="platform-row"><span class="platform-name">HackTheBox</span><span
+                                    class="platform-rank" style="color:#f59e0b;background:rgba(245,158,11,0.08)">Script
+                                    Kiddie</span></div>
+                            <div class="platform-row"><span class="platform-name">PicoCTF</span><span
+                                    class="platform-rank"
+                                    style="color:#3b82f6;background:rgba(59,130,246,0.08)">Active</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-label">Linux User</div>
-                <div class="stat-sub">Kali &amp; Arch daily</div>
-              </div>
+            </div>
+        </section>
 
-              <div class="stat-card">
-                <div class="stat-icon accent">
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="8" y="6" width="8" height="14" rx="4"></rect>
-                    <path d="M19 7l-3 2M5 7l3 2M19 12h-3M5 12h3M19 17l-3-1M5 17l3-1"></path>
-                    <path d="M12 6V3"></path>
-                  </svg>
+        <!-- ── SKILLS ── -->
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <div class="section-label" style="margin-bottom:12px">What I Know</div>
+                <h2 class="section-title" style="margin-bottom:12px">My <span class="text-accent">Skills</span></h2>
+                <p class="section-sub">Still learning and growing — these are the areas I've been actively studying and
+                    practicing.</p>
+
+                <div class="skills-grid" id="skillsGrid">
+                    <!-- Skill: Linux / Bash -->
+                    <div class="card" style="padding:20px 24px">
+                        <div class="skill-header">
+                            <div class="skill-name-wrap">
+                                <span class="text-accent"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="4 17 10 11 4 5" />
+                                        <line x1="12" y1="19" x2="20" y2="19" />
+                                    </svg></span>
+                                <span class="skill-name">Linux / Bash</span>
+                            </div>
+                            <span class="skill-pct">72%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-bar-fill" data-level="72" style="width:0%"></div>
+                        </div>
+                    </div>
+                    <!-- Skill: Network Fundamentals -->
+                    <div class="card" style="padding:20px 24px">
+                        <div class="skill-header">
+                            <div class="skill-name-wrap">
+                                <span class="text-accent"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <circle cx="12" cy="5" r="3" />
+                                        <circle cx="19" cy="19" r="3" />
+                                        <circle cx="5" cy="19" r="3" />
+                                        <line x1="12" y1="8" x2="12" y2="14" />
+                                        <line x1="12" y1="14" x2="5" y2="17" />
+                                        <line x1="12" y1="14" x2="19" y2="17" />
+                                    </svg></span>
+                                <span class="skill-name">Network Fundamentals</span>
+                            </div>
+                            <span class="skill-pct">65%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-bar-fill" data-level="65" style="width:0%"></div>
+                        </div>
+                    </div>
+                    <!-- Skill: Python -->
+                    <div class="card" style="padding:20px 24px">
+                        <div class="skill-header">
+                            <div class="skill-name-wrap">
+                                <span class="text-accent"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="16 18 22 12 16 6" />
+                                        <polyline points="8 6 2 12 8 18" />
+                                    </svg></span>
+                                <span class="skill-name">Python</span>
+                            </div>
+                            <span class="skill-pct">68%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-bar-fill" data-level="68" style="width:0%"></div>
+                        </div>
+                    </div>
+                    <!-- Skill: Web Security Basics -->
+                    <div class="card" style="padding:20px 24px">
+                        <div class="skill-header">
+                            <div class="skill-name-wrap">
+                                <span class="text-accent"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <line x1="2" y1="12" x2="22" y2="12" />
+                                        <path
+                                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                                    </svg></span>
+                                <span class="skill-name">Web Security Basics</span>
+                            </div>
+                            <span class="skill-pct">60%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-bar-fill" data-level="60" style="width:0%"></div>
+                        </div>
+                    </div>
+                    <!-- Skill: CTF & Bug Hunting -->
+                    <div class="card" style="padding:20px 24px">
+                        <div class="skill-header">
+                            <div class="skill-name-wrap">
+                                <span class="text-accent"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <rect x="8" y="6" width="8" height="14" rx="4" />
+                                        <path d="M19 7l-3 2M5 7l3 2M19 12h-3M5 12h3M19 17l-3-1M5 17l3-1" />
+                                        <path d="M12 6V3" />
+                                    </svg></span>
+                                <span class="skill-name">CTF &amp; Bug Hunting</span>
+                            </div>
+                            <span class="skill-pct">55%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-bar-fill" data-level="55" style="width:0%"></div>
+                        </div>
+                    </div>
+                    <!-- Skill: Cryptography Basics -->
+                    <div class="card" style="padding:20px 24px">
+                        <div class="skill-header">
+                            <div class="skill-name-wrap">
+                                <span class="text-accent"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <circle cx="7.5" cy="15.5" r="5.5" />
+                                        <path d="M21 2l-9.6 9.6M15.5 7.5l3 3" />
+                                    </svg></span>
+                                <span class="skill-name">Cryptography Basics</span>
+                            </div>
+                            <span class="skill-pct">50%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-bar-fill" data-level="50" style="width:0%"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-label">CTF Player</div>
-                <div class="stat-sub">TryHackMe &amp; HackTheBox</div>
-              </div>
 
-              <div class="stat-card">
-                <div class="stat-icon accent">
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="16 18 22 12 16 6"></polyline>
-                    <polyline points="8 6 2 12 8 18"></polyline>
-                  </svg>
+                <!-- Tool badges -->
+                <div style="margin-top:48px">
+                    <div class="tools-title">Tools &amp; Technologies</div>
+                    <div class="tools-wrap">
+                        <span class="tag">Kali Linux</span><span class="tag">Nmap</span><span
+                            class="tag">Metasploit</span>
+                        <span class="tag">Burp Suite</span><span class="tag">Wireshark</span><span class="tag">John the
+                            Ripper</span>
+                        <span class="tag">Gobuster</span><span class="tag">Netcat</span><span class="tag">Git</span>
+                        <span class="tag">Docker</span><span class="tag">VS Code</span><span class="tag">Vim</span>
+                    </div>
                 </div>
-                <div class="stat-label">Python Dev</div>
-                <div class="stat-sub">Scripting &amp; Tooling</div>
-              </div>
             </div>
+        </section>
 
-            <div class="learning-card">
-              <div class="learning-title">Learning Platforms</div>
+        <!-- ── PROJECTS ── -->
+        <section id="projects" style="padding:100px 24px">
+            <div class="radial-glow radial-glow--projects"></div>
+            <div class="container" style="position:relative;z-index:1">
+                <div class="section-label" style="margin-bottom:12px">What I've Built</div>
+                <h2 class="section-title" style="margin-bottom:12px">My <span class="text-accent">Projects</span></h2>
+                <p class="section-sub">Personal projects and tools I've built while learning. Each one taught me
+                    something new about security.</p>
 
-              <div class="learning-row">
-                <span class="learning-name">TryHackMe</span>
-                <span class="learning-rank" style="color: #00d4aa; background: rgba(0, 212, 170, 0.082353);">Top 10%</span>
-              </div>
-              <div class="learning-row">
-                <span class="learning-name">HackTheBox</span>
-                <span class="learning-rank" style="color: #f59e0b; background: rgba(245, 158, 11, 0.082353);">Script Kiddie</span>
-              </div>
-              <div class="learning-row no-margin">
-                <span class="learning-name">PicoCTF</span>
-                <span class="learning-rank" style="color: #3b82f6; background: rgba(59, 130, 246, 0.082353);">Active</span>
-              </div>
+                <div class="projects-grid">
+
+                    <!-- Project: Port Scanner -->
+                    <div class="card" style="padding:28px">
+                        <div class="proj-top">
+                            <div class="proj-icon"
+                                style="color:#00d4aa;background:rgba(0,212,170,0.08);border-color:rgba(0,212,170,0.18)">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="5" r="3" />
+                                    <circle cx="19" cy="19" r="3" />
+                                    <circle cx="5" cy="19" r="3" />
+                                    <line x1="12" y1="8" x2="12" y2="14" />
+                                    <line x1="12" y1="14" x2="5" y2="17" />
+                                    <line x1="12" y1="14" x2="19" y2="17" />
+                                </svg>
+                            </div>
+                            <span class="proj-tag"
+                                style="color:#00d4aa;background:rgba(0,212,170,0.07);border-color:rgba(0,212,170,0.14)">Python
+                                Tool</span>
+                        </div>
+                        <h3 class="proj-title">Port Scanner</h3>
+                        <p class="proj-desc">Built a multi-threaded TCP port scanner in Python that identifies open
+                            services on a target host. Learned socket programming and basic recon techniques.</p>
+                        <div class="proj-tags"><span class="tag">Python</span><span class="tag">Sockets</span><span
+                                class="tag">Threading</span></div>
+                        <button class="proj-gh-btn" style="color:#00d4aa" onmouseenter="this.style.gap='10px'"
+                            onmouseleave="this.style.gap='6px'">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                            View on GitHub
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7" />
+                                <polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Project: Password Manager CLI -->
+                    <div class="card" style="padding:28px">
+                        <div class="proj-top">
+                            <div class="proj-icon"
+                                style="color:#3b82f6;background:rgba(59,130,246,0.08);border-color:rgba(59,130,246,0.18)">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                </svg>
+                            </div>
+                            <span class="proj-tag"
+                                style="color:#3b82f6;background:rgba(59,130,246,0.07);border-color:rgba(59,130,246,0.14)">Cryptography</span>
+                        </div>
+                        <h3 class="proj-title">Password Manager CLI</h3>
+                        <p class="proj-desc">A command-line password manager using AES-256 encryption and PBKDF2 key
+                            derivation. Stores encrypted credentials in a local SQLite database.</p>
+                        <div class="proj-tags"><span class="tag">Python</span><span class="tag">AES-256</span><span
+                                class="tag">SQLite</span></div>
+                        <button class="proj-gh-btn" style="color:#3b82f6" onmouseenter="this.style.gap='10px'"
+                            onmouseleave="this.style.gap='6px'">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                            View on GitHub
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7" />
+                                <polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Project: CTF Write-ups Blog -->
+                    <div class="card" style="padding:28px">
+                        <div class="proj-top">
+                            <div class="proj-icon"
+                                style="color:#f59e0b;background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.18)">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                            </div>
+                            <span class="proj-tag"
+                                style="color:#f59e0b;background:rgba(245,158,11,0.07);border-color:rgba(245,158,11,0.14)">Learning
+                                Journal</span>
+                        </div>
+                        <h3 class="proj-title">CTF Write-ups Blog</h3>
+                        <p class="proj-desc">Documenting my journey through TryHackMe and HackTheBox challenges. Covers
+                            topics like privilege escalation, reverse shells, and OSINT.</p>
+                        <div class="proj-tags"><span class="tag">TryHackMe</span><span
+                                class="tag">HackTheBox</span><span class="tag">OSINT</span></div>
+                        <button class="proj-gh-btn" style="color:#f59e0b" onmouseenter="this.style.gap='10px'"
+                            onmouseleave="this.style.gap='6px'">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                            View on GitHub
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7" />
+                                <polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Project: Network Packet Analyzer -->
+                    <div class="card" style="padding:28px">
+                        <div class="proj-top">
+                            <div class="proj-icon"
+                                style="color:#8b5cf6;background:rgba(139,92,246,0.08);border-color:rgba(139,92,246,0.18)">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="2" y1="12" x2="22" y2="12" />
+                                    <path
+                                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                                </svg>
+                            </div>
+                            <span class="proj-tag"
+                                style="color:#8b5cf6;background:rgba(139,92,246,0.07);border-color:rgba(139,92,246,0.14)">Networking</span>
+                        </div>
+                        <h3 class="proj-title">Network Packet Analyzer</h3>
+                        <p class="proj-desc">Simple packet sniffer using Python Scapy to capture and analyze network
+                            traffic. Helps visualize TCP/IP headers and DNS queries.</p>
+                        <div class="proj-tags"><span class="tag">Python</span><span class="tag">Scapy</span><span
+                                class="tag">Wireshark</span></div>
+                        <button class="proj-gh-btn" style="color:#8b5cf6" onmouseenter="this.style.gap='10px'"
+                            onmouseleave="this.style.gap='6px'">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                            View on GitHub
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7" />
+                                <polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <section id="skills" class="skills-section">
-      <div class="container section-container">
-        <div class="section-label tight-label">What I Know</div>
-        <h2 class="section-title small-gap">My <span class="accent">Skills</span></h2>
-        <p class="section-copy">
-          Still learning and growing — these are the areas I've been actively studying and practicing.
-        </p>
+        <!-- ── CONTACT ── -->
+        <section id="contact" class="contact-section">
+            <div class="radial-glow radial-glow--contact"></div>
+            <div class="container contact-container" style="position:relative;z-index:1">
+                <div class="section-label" style="margin-bottom:12px">Get in Touch</div>
+                <h2 class="section-title" style="margin-bottom:12px">Let's <span class="text-accent">Connect</span></h2>
+                <p class="section-sub">Whether you want to collaborate on a CTF, discuss cybersecurity, or consider me
+                    for an internship — I'd love to hear from you.</p>
 
-        <div id="skills-grid" class="skills-grid"></div>
+                <div class="card" style="padding:36px">
+                    <div class="contact-row">
+                        <div>
+                            <label class="contact-label">Name</label>
+                            <input class="contact-input" type="text" placeholder="Your name" />
+                        </div>
+                        <div>
+                            <label class="contact-label">Email</label>
+                            <input class="contact-input" type="email" placeholder="your@email.com" />
+                        </div>
+                    </div>
+                    <div style="margin-bottom:16px">
+                        <label class="contact-label">Subject</label>
+                        <input class="contact-input" type="text" placeholder="What's this about?" />
+                    </div>
+                    <div style="margin-bottom:24px">
+                        <label class="contact-label">Message</label>
+                        <textarea class="contact-input" rows="5" placeholder="Tell me more..."
+                            style="resize:vertical"></textarea>
+                    </div>
+                    <button class="btn-primary" style="width:100%;justify-content:center;padding:14px">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        Send Message
+                    </button>
+                </div>
 
-        <div class="tools-wrap">
-          <div class="tools-title">Tools &amp; Technologies</div>
-          <div id="tools-list" class="tools-list"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="projects-section">
-      <div class="projects-radial" aria-hidden="true"></div>
-      <div class="container section-container projects-content">
-        <div class="section-label tight-label">What I've Built</div>
-        <h2 class="section-title small-gap">My <span class="accent">Projects</span></h2>
-        <p class="section-copy">
-          Personal projects and tools I've built while learning. Each one taught me something new about security.
-        </p>
-
-        <div id="projects-grid" class="projects-grid"></div>
-      </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-      <div class="contact-radial" aria-hidden="true"></div>
-      <div class="container section-container contact-container">
-        <div class="section-label tight-label">Get in Touch</div>
-        <h2 class="section-title small-gap">Let's <span class="accent">Connect</span></h2>
-        <p class="section-copy contact-copy">
-          Whether you want to collaborate on a CTF, discuss cybersecurity, or consider me for an internship — I'd love to hear from you.
-        </p>
-
-        <div class="card contact-card">
-          <div class="contact-row">
-            <div>
-              <label class="field-label" for="name">Name</label>
-              <input id="name" class="contact-input" type="text" placeholder="Your name" />
+                <!-- Social links -->
+                <div class="social-links">
+                    <button class="social-btn" id="ghBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                        </svg>
+                        GitHub
+                    </button>
+                    <button class="social-btn" id="liBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                        LinkedIn
+                    </button>
+                    <button class="social-btn" id="twBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                        Twitter
+                    </button>
+                </div>
             </div>
-            <div>
-              <label class="field-label" for="email">Email</label>
-              <input id="email" class="contact-input" type="email" placeholder="your@email.com" />
+        </section>
+
+        <!-- ── FOOTER ── -->
+        <footer id="footer">
+            <div class="footer-inner">
+                <div class="footer-logo">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="text-accent" style="color:var(--accent)">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                    <span class="footer-logo-text">Alex<span class="text-accent">Sec</span></span>
+                </div>
+                <p class="footer-copy">© 2025 Alex Chen · Built with HTML/CSS/JS · Stay Curious, Stay Secure</p>
+                <div class="footer-links footer-social">
+                    <button class="footer-link" onclick="scrollTo('home')">Home</button>
+                    <button class="footer-link" onclick="scrollTo('about')">About</button>
+                    <button class="footer-link" onclick="scrollTo('skills')">Skills</button>
+                    <button class="footer-link" onclick="scrollTo('projects')">Projects</button>
+                    <button class="footer-link" onclick="scrollTo('contact')">Contact</button>
+                </div>
             </div>
-          </div>
+        </footer>
 
-          <div class="field-group">
-            <label class="field-label" for="subject">Subject</label>
-            <input id="subject" class="contact-input" type="text" placeholder="What's this about?" />
-          </div>
+    </div><!-- #root -->
 
-          <div class="field-group message-group">
-            <label class="field-label" for="message">Message</label>
-            <textarea id="message" class="contact-input" rows="5" placeholder="Tell me more..."></textarea>
-          </div>
-
-          <button type="button" class="btn-primary contact-submit">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-            Send Message
-          </button>
-        </div>
-
-        <div id="social-links" class="social-links"></div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-          </svg>
-          <span class="footer-logo-text">Alex<span class="accent">Sec</span></span>
-        </div>
-
-        <p class="footer-copy">© 2025 Alex Chen · Built with React · Stay Curious, Stay Secure</p>
-
-        <div id="footer-links" class="footer-links"></div>
-      </div>
-    </footer>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
