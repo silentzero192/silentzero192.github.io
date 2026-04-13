@@ -40,6 +40,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 92px;
 }
 
 body {
@@ -90,6 +91,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  text-decoration: none;
 }
 .btn-primary:hover {
   transform: translateY(-2px);
@@ -107,6 +109,9 @@ body {
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
 }
 .btn-outline:hover {
   background: var(--tag-bg);
@@ -238,6 +243,7 @@ body {
 @media (max-width: 768px) {
   .hero-grid       { flex-direction: column !important; }
   .about-grid      { flex-direction: column !important; gap: 32px !important; }
+  .contact-row     { grid-template-columns: 1fr !important; }
   .projects-grid   { grid-template-columns: 1fr !important; }
   .skills-grid     { grid-template-columns: 1fr !important; }
   .desktop-nav     { display: none !important; }
@@ -289,4 +295,9 @@ body {
 
 section {
   position: relative;
+  scroll-margin-top: 92px;
+}
+
+.accent {
+  color: var(--accent);
 }
